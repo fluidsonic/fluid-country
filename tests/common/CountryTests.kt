@@ -51,7 +51,6 @@ class CountryTests {
 		assertEquals(expected = usCode, actual = us.code)
 		assertEquals(expected = "US", actual = us.code(CountryCode.Format.iso3166_alpha2))
 		assertEquals(expected = "USA", actual = us.code(CountryCode.Format.iso3166_alpha3))
-		assertEquals(expected = "United States of America (the)", actual = us.name)
 		assertEquals(expected = 840, actual = us.numericCode)
 	}
 
