@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: xcodebuild -version
-      - run: sudo xcode-select -switch /Applications/Xcode_11.app
+      - run: sudo xcode-select -switch /Applications/Xcode_12.app
       - run: xcodebuild -version
       - run: xcrun simctl list
       - run: ./gradlew iosX64Test macosX64Test tvosX64Test watchosX86Test
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: ./gradlew jsIrTest jsLegecyTest
+      - run: ./gradlew jsIrTest jsLegacyTest
   jdk:
     name: JDK ${{ matrix.java_version }}
     runs-on: ubuntu-latest
