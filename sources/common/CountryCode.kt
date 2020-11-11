@@ -1,5 +1,9 @@
 package io.fluidsonic.country
 
+import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.*
+
 
 /**
  * An ISO 3166-1 alpha-2 country code, for example `US` or `DE`.
@@ -8,8 +12,16 @@ package io.fluidsonic.country
  * - [https://www.iso.org/iso-3166-country-codes.html]
  * - [https://www.iso.org/obp/ui/]
  */
-@Suppress("NON_PUBLIC_PRIMARY_CONSTRUCTOR_OF_INLINE_CLASS", "UNUSED_PARAMETER")
-public inline class CountryCode @PublishedApi internal constructor(private val value: String) {
+@Serializable(CountryCodeSerializer::class)
+public class CountryCode internal constructor(private val value: String) {
+
+	override fun equals(other: Any?): Boolean =
+		this === other || (other is CountryCode && value == other.value)
+
+
+	override fun hashCode(): Int =
+		value.hashCode()
+
 
 	public fun isValid(): Boolean =
 		Country.forCodeOrNull(this) != null
@@ -43,4 +55,21 @@ public inline class CountryCode @PublishedApi internal constructor(private val v
 		iso3166_alpha2,
 		iso3166_alpha3
 	}
+}
+
+
+@Serializer(forClass = CountryCode::class)
+internal object CountryCodeSerializer : KSerializer<CountryCode> {
+
+	override val descriptor: SerialDescriptor =
+		PrimitiveSerialDescriptor("io.fluidsonic.country.CountryCode", PrimitiveKind.STRING)
+
+
+	override fun serialize(encoder: Encoder, value: CountryCode) {
+		encoder.encodeString(value.toString())
+	}
+
+
+	override fun deserialize(decoder: Decoder): CountryCode =
+		CountryCode.parse(decoder.decodeString())
 }
