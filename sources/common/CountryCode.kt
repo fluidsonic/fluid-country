@@ -15,6 +15,11 @@ import kotlinx.serialization.encoding.*
 @Serializable(CountryCodeSerializer::class)
 public class CountryCode internal constructor(private val value: String) {
 
+	init {
+		freeze()
+	}
+
+
 	override fun equals(other: Any?): Boolean =
 		this === other || (other is CountryCode && value == other.value)
 
