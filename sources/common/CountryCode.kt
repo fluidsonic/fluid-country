@@ -63,6 +63,7 @@ public class CountryCode internal constructor(private val value: String) {
 }
 
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializer(forClass = CountryCode::class)
 internal object CountryCodeSerializer : KSerializer<CountryCode> {
 
