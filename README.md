@@ -19,7 +19,7 @@ Installation
 
 ```kotlin
 dependencies {
-	implementation("io.fluidsonic.country:fluid-country:0.9.4")
+	implementation("io.fluidsonic.country:fluid-country:0.9.5")
 }
 ```
 
