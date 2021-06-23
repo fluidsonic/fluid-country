@@ -45,7 +45,7 @@ public class CountryCode internal constructor(private val value: String) {
 		public fun parseOrNull(string: String): CountryCode? =
 			string
 				.takeIf(this::isValidFormat)
-				?.let { CountryCode(value = it.toUpperCase()) }
+				?.let { CountryCode(value = it.uppercase()) }
 
 
 		private fun isValidFormat(string: String) =
