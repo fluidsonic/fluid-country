@@ -2,7 +2,7 @@ import io.fluidsonic.gradle.*
 import org.jetbrains.kotlin.gradle.plugin.*
 
 plugins {
-	id("io.fluidsonic.gradle") version "1.1.23"
+	id("io.fluidsonic.gradle") version "1.1.25"
 }
 
 fluidLibrary(name = "country", version = "0.10.0")
@@ -11,7 +11,7 @@ fluidLibraryModule(description = "Kotlin multiplatform country library") {
 	targets {
 		common {
 			dependencies {
-				implementation(kotlinx("serialization-core", "1.2.1"))
+				implementation(kotlinx("serialization-core", "1.3.2"))
 			}
 		}
 
