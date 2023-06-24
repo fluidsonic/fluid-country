@@ -7,11 +7,6 @@ public class Country private constructor(
 	public val numericCode: Int,
 ) {
 
-	init {
-		freeze()
-	}
-
-
 	public fun code(format: CountryCode.Format): String =
 		when (format) {
 			CountryCode.Format.iso3166_alpha2 -> code.toString()
